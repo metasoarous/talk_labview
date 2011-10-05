@@ -1,0 +1,152 @@
+<html>
+
+<head>
+<title>hp34970a Instrument Driver Readme</title>
+</head>
+
+<body>
+<pre>
+<font face = "Times New Roman", size = 3>
+<h2>hp34970a Instrument Driver Readme</h2>
+To rate this driver, go to the driver download page on the <a href = http://www.ni.com/idnet>Instrument Driver Network</a>.
+
+<h4>1. Overview</h4>
+Instrument Driver Technology:  Plug and Play
+Supported Language(s):  LabVIEW
+
+Supported Model(s):  Hewlett-Packard HP 34970A Data Acquisition / Switch Unit
+Model(s) Tested:  HP 34970A
+Interface(s):  GPIB, Serial
+Firmware Revision Tested:  13-01-02 
+
+Supported Modules: 
+34901A 20-Channel Armature Multiplexer
+34902A 16-Channel Reed Multiplexer
+34903A 20-Channel Actuator / General-Purpose Switch
+34904A 4x8 Two-Wire Matrix Switch
+34905/6A Dual 4-Channel RF Multiplexers
+34907A Multifunction Module
+34908A 40-Channel Single-Ended Multiplexer
+
+Certified:  Yes
+NI Supported:  Yes
+Source Code Available:  Yes
+
+Driver Revision:   2.03
+Original Release Date:  February 1998
+Current Revision Date:  October 2004
+
+
+<h4>2. Required Software</h4>
+Some software components need to be installed before using this instrument driver. The minimum versions of 
+these components are listed below, and can be downloaded from the Download Site.
+
+VISA 3.0
+
+Note: VISA has additional software requirements. For example, unless you are using a serial interface, 
+NI-VISA requires that NI-488.2 and/or NI-VXI be installed on your system. Check with VISA help for additional 
+support software and hardware requirements.
+
+
+<h4>3. Installation Instructions</h4>
+LabVIEW:
+Instrument drivers should be installed as a subdirectory of the labview\instr.lib. For example, the HP34401A 
+instrument driver, which is included with LabVIEW, is installed in the following directory: 
+
+labview\instr.lib\hp34401a
+
+Within this directory you can find the menu files and VI libraries that make up an instrument driver. The 
+menu files allow you to view the instrument driver VIs from the Functions palette. The VI libraries contain 
+the instrument driver VIs.
+
+
+<h4>4. Using the Instrument Driver</h4>
+LabVIEW:
+To verify communication with your instrument and test a typical programmatic instrument operation, you should 
+first open the Getting Started or Example VIs the instrument driver. Look over each of the controls and set 
+them appropriately. Generally, with the exception of the address field, the defaults for most controls will 
+be sufficient for your first run. You will need to set the instrument resource name appropriately. After 
+running the VI, check to see that reasonable data was returned and an error was not reported in the error 
+cluster.
+
+After you have verified basic communication with your instrument, you might want to customize instrument 
+control for your needs. If your application needs are similar to the Getting Started or Example VI, the 
+simplest means of creating a customized VI is to save a copy of the Getting Started or Example VI by 
+selecting Save As from the File menu. You can then modify this example to meet your specific needs.
+
+For more details, reference the <i>LabVIEW Help</i> under <i>Help &#0187; VI, Function, &amp; How-To Help</i>.
+
+
+<h4>5. Known Issues</h4>
+To report issues or provide feedback about this instrument driver, please send an email to <a 
+href="mailto:instrument.drivers@ni.com">instrument.drivers@ni.com</a>.
+<!-- Add known issues here as necessary. -->
+There are currently no known issues with this instrument driver.
+
+
+<h4>6. Revision History</h4>
+The latest version of this and other LabVIEW and LabWindows/CVI instrument drivers can be downloaded at the 
+<a href = http://www.ni.com/idnet>Instrument Driver Network</a>.
+
+Rev. 1.0, 02/98, LV4.1
+Paul Davis, VI Technology
+Phone:  512.327.3348
+Email:  paul.davis@vi-tech.com
+- Original Release
+
+June 2001 - DAS
+- Added support for RS-232 (i.e. serial) interface. 
+- Added a linefeed to every string written to the instrument.
+
+Feb 2003 - MUV
+- Fixed bug in Single Point.vi. Changed the enum control "slot number" from 8 bit representation to 16 bit representation to accomodate numbers above 256.
+
+Rev. 2.0, Oct 2003, LV7.0 - LW
+- Changed classic controls to 3d
+- Update driver to conform with new instrument driver standards
+- Deprecated HP34970A System.vi and added HP34970A Version.vi
+- Tested driver and fixed bugs:
+
+ - Standard Event Status.vi - The command STAT:OPER:ENAB was being sent which did not apply to the standard event register.  *ESE was used instead.
+ - Monitor.vi - Read option added.  There was already an "on" and "off", so there needed to be a "read" command so that the actual values from the monitor could be read.
+ - HP34970A Display.vi - Boolean logic error preventing earlier driver versions from turning on and off the display.
+ - Old examples replaced by new examples which better demonstrate the instrument driver usage.
+ - HP34970A Time.vi - Added ability to read time on the instrument.  Fixed error in driver when trying to set date AND time.
+ - HP34970A EZ Freq and Period.vi - Error in old driver reflecting an error in instrument documentation.
+ - HP34970A Conf Freq and Period.vi - Added setting and checking the Low Filter.
+ - HP34970A Error Message.vi - Originally was not on any palettes.  Connector pane was not wired.
+ - HP34970A Conf Temp.vi - Setting thermistor type to Default generated an error because DEF was not a possible parameter to SENS:TEMP:TRAN:THER:TYPE.  Default option kept for backwards compatability, however it is now functionally equivalent to the "10000" option.
+ - HP34970A Conf EZ/Voltage/Current/Resistance.vi - The system for setting resolution by number of digits used incorrect translation table.  This was replaced by a better algerbraic method and documented in the block diagram.
+ - HP34970A Conf EZ.vi - There is no CONF:DIG:WORD.  Option removed and documented in the VI.
+ - HP34970A Conf Alarm.vi - Several command errors.
+ - HP34970A Conf DIO Alarm.vi - Fixed errors similar to those in Conf EZ.vi concerning no :WORD commands.
+ - HP34970A Trigger.vi - Error with the Immediate trigger option command syntax.  Added an INIT command after the TRIG:SOUR IMM so that this VI would do what it logically should do, which is immediately trigger a scan.
+ - HP34970A EZ Digital.vi - Like other VIs, there this VI offers options for doing things in WORDs, while this command is not supported in the instrument.  Control deprecated by putting a note in the VI documentation, the block diagram, writing "Deprecated" in the Byte/Word boolean control, and finally by changing the illegal Word command to be the same as the byte.
+ Deprecated:
+ HP34970A System.vi - pop up window, lots of things didn't make sense.  most of the functionality was in other more specific VIs.  I created HP34970A Version.vi to provide the unique functionality it possessed.
+
+Rev. 2.01, 04/04, LV7.0
+Matt Meredith, NI, Austin
+- Updated EZ Totalizer.vi to work with the current instrument firmware.
+- Removed extraneous get_start.mnu
+- moved the deprecated vi to the utility llb
+
+Rev 2.02, 09/2004, LV 7.0
+Matthew McClintock, NI, Austin
+- Updated Revision Query VI to return version information in the Instr Driver Revision indicator.
+
+Rev 2.03, 10/2004, LV 7.0
+Matthew McClintock, NI, Austin
+- removed long time obsolete System VI
+
+</font>
+</pre>
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,6 @@
+Locn	Probe	Channel	Res to Temp Equation	CalDate
+Cell	M1	103	197.3569-51.4579*log(x)	26 Jul 2010, 20C, relative to OM1
+Acid	OM1	104	197.5302-51.4579*log(x)	1 & 2 Jun 2010, full, relative to Hart
+Brt1	OS1	105	202.2207-52.8413*log(x)	2 Jun 2010, full, relative to Hart
+Brt2	OS1	106	202.2207-52.8413*log(x)	2 Jun 2010, full, relative to Hart
+Room	OA1	107	209.3557-54.9348*log(x)	1 & 2 Jun 2010, full, relative to Hart

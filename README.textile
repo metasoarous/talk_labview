@@ -1,0 +1,16 @@
+h1. Alkilinity Measurement Tool
+
+This software is designed to operate an alkilinity measurement device consisting of
+
+* Agilent 34970A Data Aquisition / Switch Unit
+* Metrohm 876 Dosimat Plus Acid doser
+* Relay Unit (controlling a stir plate and a mass flow controller - don't have the models on these at the moment of this writing. Sorry; maybe later)
+
+This software was built for the University of Washington Friday Harbor Labs for an instrument 
+setup consisting of the devices listed above. The software is provided here freely to any who 
+may wish to construct a similar instrument using the same or sufficiently similar components 
+(under the auspices that some modifications might have to be made on a per case basis). Should
+someone wish to do so, it would be worth contacting me or the labs for more detailed information
+on the actual equipment setup. At a later point, we may go so far as
+to include some information in this repository regarding the actual physical setup of these 
+instruments.
